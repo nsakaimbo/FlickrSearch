@@ -10,11 +10,11 @@ import Foundation
 
 enum APIKeys {
     
-    case Flickr
+    case flickr
     
     private var name: String {
         switch self {
-        case .Flickr: return "FlickrAPIKey"
+        case .flickr: return "FlickrAPIKey"
         }
     }
     
@@ -22,9 +22,9 @@ enum APIKeys {
        
         let keyname = self.name
         
-        guard let filePath = NSBundle.mainBundle().pathForResource("ApiKeys", ofType:"plist"),
+        guard let filePath = Bundle.main().pathForResource("ApiKeys", ofType:"plist"),
             plist = NSDictionary(contentsOfFile:filePath),
-            apiKey = plist.objectForKey(keyname) as? String else {
+            apiKey = plist.object(forKey: keyname) as? String else {
                 
                 fatalError("Error. API Key unavailable.")
                 
